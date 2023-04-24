@@ -1,52 +1,35 @@
 <template>
     <div class="c-text-field">
-        <input class="c-text-field__input" v-bind="$attrs" @input="$emit('update', value)">
+        <input class="c-text-field__input" :id="id" :placeholder="placeholder" :type="type" :value="value"
+            @input="$emit('update', value)">
     </div>
 </template>
 
 <script>
-export default{
+export default {
     name: 'CTextField',
     inheritAttrs: false,
-    props:{
-        id:{
+    props: {
+        id: {
             type: String,
-            default:'',
+            default: '',
         },
-        placeholder:{
+        placeholder: {
             type: String,
-            default:'',
+            default: '',
         },
-        type:{
+        type: {
             type: String,
-            default:'text',
+            default: 'text',
         },
-        value:{
+        value: {
             type: String,
-            default:'',
+            default: '',
         }
     },
-    emits:['update'],
+    emits: ['update'],
 }
 </script>
 
 <style lang="scss">
-.c-text-field{
-    margin-top: auto;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    width: 50%;
-    background-color: var(--color-input);
-}
-.c-text-field__input{
-    width: 100%;
-    height: 100%;
-    color: var(--color-font);
-    border: none;
-}
-::placeholder{
-    color:var(--color-font);
-}
 </style>

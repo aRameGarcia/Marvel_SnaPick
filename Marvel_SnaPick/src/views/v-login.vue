@@ -1,48 +1,55 @@
 <template>
-  <main>
-    <c-text-field id="username_input" placeholder="Usuario"/>
-    <c-text-field id="password_input" placeholder="Contraseña" :type="type"/>
-    <div class="v-login">
-      <span class="v-login__error" v-if="errorVisibility">{{ errorMessage }}</span>
-      <span class="v-login__success" v-else-if="success">{{ successMessage }}</span>
-    </div>
-    <c-button @click="checkLogin"></c-button>
-  </main>
+  <l-centered>
+      <template #form>
+          <c-text-field id="username_input" placeholder="Usuario" />
+          <c-text-field id="password_input" placeholder="Contraseña" :type="type" />
+          <div class="v-login">
+            <span class="v-login__error" v-if="errorVisibility">{{ errorMessage }}</span>
+            <span class="v-login__success" v-else-if="success">{{ successMessage }}</span>
+          </div>
+      </template>
+      <template #button>
+          <c-button @click="checkLogin" innerText="Confirmar"></c-button>
+          <c-button innerText="Registrarse"></c-button>
+      </template>
+  </l-centered>
 </template>
 
 <script>
+import LCentered from '../layouts/l-centered.vue'
 import CTextField from '../components/c-text-field.vue'
 import CButton from '../components/c-button.vue'
 
-export default{
+export default {
   name: 'v-login',
-  components:{
+  components: {
+    LCentered,
     CTextField,
     CButton,
   },
-  data(){
-    return{
-      username:'',
-      password:'',
+  data() {
+    return {
+      username: '',
+      password: '',
       success: false,
       errorVisibility: false,
       errorMessage: 'Credenciales Incorrectas!!!',
       successMessage: 'Las credenciales son correctas!!!',
-      type:'password'
+      type: 'password'
     };
   },
-  methods:{
-    checkLogin(){
-      if(this.username==='Álvaro' && this.password==='1234'){
-        this.success=true;
-        this.errorVisible=false;
-      }else{
+  methods: {
+    checkLogin() {
+      if (this.username === 'Álvaro' && this.password === '1234') {
+        this.success = true;
+        this.errorVisible = false;
+      } else {
         this.sendError();
       }
     },
-    sendError(){
-      this.errorVisible=true;
-      this.success=false;
+    sendError() {
+      this.errorVisible = true;
+      this.success = false;
     },
     /* showPassword(){
       this.type='password';
@@ -55,5 +62,4 @@ export default{
 }
 </script>
 
-<style>
-</style>
+<style></style>

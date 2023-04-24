@@ -1,10 +1,5 @@
 <template>
-    <button class="c-button" v-bind="$attrs">
-        Confirmar
-    </button>
-    <button class="c-button">
-        Registrarse
-    </button>
+    <button class="c-button" :id="id" :innerText="innerText"></button>
 </template>
 
 <script>
@@ -13,6 +8,10 @@ export default{
     inheritAttrs: false,
     props:{
         id:{
+            type: String,
+            default:'',
+        },
+        innerText:{
             type: String,
             default:'',
         }
