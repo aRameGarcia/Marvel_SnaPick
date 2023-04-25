@@ -1,13 +1,11 @@
 <template>
   <l-centered>
     <template #header>
-        <div class="header-user"><span>Usuario logeado</span></div>
-        <div class="header-image">
-          <img src="../assets/cards/logo.png" alt="Marvel SnaPick">
-        </div>
-        <div class="header-button">
-          <button>PERFIL</button>
-        </div>
+      <span class="v-login__header--user">Usuario logeado</span>
+      <img class="v-login__header--image" src="../assets/cards/logo.png" alt="Marvel SnaPick" />
+      <div class="v-login__header--container">
+        <button class="v-login__header--button">PERFIL</button>
+      </div>
     </template>
     <template #form>
       <c-text-field id="username_input" placeholder="Usuario" v-model="username" />
@@ -28,14 +26,13 @@ import LCentered from '../layouts/l-centered.vue'
 import CTextField from '../components/c-text-field.vue'
 import CButton from '../components/c-button.vue'
 import { userStore } from '../stores/user'
-import { mapActions } from 'pinia'
 
 export default {
   name: 'v-login',
   components: {
     LCentered,
     CTextField,
-    CButton,
+    CButton
   },
   data() {
     return {
@@ -44,7 +41,7 @@ export default {
       errorVisibility: false,
       errorMessage: 'Credenciales Incorrectas!!!',
       type: 'password'
-    };
+    }
   },
   methods: {
     /* checkLogin() {
@@ -63,16 +60,16 @@ export default {
       if (doLogin) {
         this.$router.push({ name: 'collection' })
       } else {
-        this.sendError();
+        this.sendError()
       }
     },
     sendError() {
-      this.errorVisibility = true;
-      this.success = false;
+      this.errorVisibility = true
+      this.success = false
       setTimeout(() => {
-        this.errorVisibility = false;
+        this.errorVisibility = false
       }, 5000)
-    },
+    }
     /* showPassword(){
       this.type='password';
       if(this.type==='password'){
@@ -80,32 +77,28 @@ export default {
       }
     } */
   }
-
 }
 </script>
 
-<style>
-.header-user{
-  display: flex;
-  justify-content: start;
-  flex: 1;
-  height: 100%;
+<style scoped>
+.v-login__header--user {
+  font-weight: bold;
+  width: 150px;
 }
-.header-image {
-  display: flex;
-  justify-content: center;
-  flex: 1;
-  height: 100%;
+
+.v-login__header--image {
+  width: 400px;
+  height: 200px;
 }
-.header-image img{
-  margin-top: 15px;
-  height: 120px;
-}
-.header-button {
+
+.v-login__header--container {
   display: flex;
   justify-content: end;
-  align-items: flex-start;
-  flex: 1;
-  height: 100%;
+  width: 150px;
+}
+
+.v-login__header--button {
+  max-width: 80px;
+  max-height: 40px;
 }
 </style>
