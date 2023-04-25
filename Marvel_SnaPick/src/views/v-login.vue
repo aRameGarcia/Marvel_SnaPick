@@ -90,16 +90,15 @@ export default {
   justify-content: start;
   flex: 1;
   height: 100%;
-  border: 1px solid blue;
 }
 .header-image {
   display: flex;
   justify-content: center;
   flex: 1;
   height: 100%;
-  border: 1px solid red;
 }
 .header-image img{
+  margin-top: 15px;
   height: 120px;
 }
 .header-button {
@@ -108,7 +107,5 @@ export default {
   align-items: flex-start;
   flex: 1;
   height: 100%;
-  border: 1px solid green;
-
 }
 </style>
