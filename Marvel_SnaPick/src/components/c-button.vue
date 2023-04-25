@@ -17,3 +17,13 @@ export default{
     }
 };
 </script>
+
+<style>
+.c-button{
+    background-color: var(--color-button);
+    color: var(--color-background-light);
+    border: none;
+    padding: 5px;
+    font-weight: bold;
+}
+</style>

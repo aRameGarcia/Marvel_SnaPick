@@ -38,11 +38,12 @@ export default {
   border-radius: 10px;
   width: 100%;
   height: 2em;
+  padding: 5px;
 }
 .c-text-field__input{
   background-color: transparent;
   color: var(--color-font);
-  border-radius: 10px;
+  border: none;
   width: 100%;
   height: 100%;
 }

@@ -1,5 +1,8 @@
 <template>
     <section class="l-centered">
+        <div class="l-centered__header">
+                <slot name="header"></slot>
+            </div>
         <div class="l-centered__grid">
             <div class="l-centered__form">
                 <slot name="form"></slot>
@@ -25,6 +28,13 @@ export default {
     align-items: center;
     height: 100%;
 }
+.l-centered__header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
 .l-centered__grid {
     display: flex;
     flex-direction: column;
@@ -49,6 +59,6 @@ export default {
     justify-content: center;
     align-items: center;
     width: 100%;
-    gap: 5px;
+    gap: 20px;
 }
 </style>
