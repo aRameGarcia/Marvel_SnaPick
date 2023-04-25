@@ -1,14 +1,14 @@
 <template>
     <div class="c-text-field">
-        <input class="c-text-field__input" :id="id" :placeholder="placeholder" :type="type" :value="value"
-            @input="$emit('update', value)">
+        <input class="c-text-field__input" :id="id" :placeholder="placeholder" :type="type"
+            @input="$emit('update:modelValue', $event.target.value)">
     </div>
 </template>
 
 <script>
 export default {
     name: 'CTextField',
-    inheritAttrs: false,
+
     props: {
         id: {
             type: String,
@@ -22,14 +22,31 @@ export default {
             type: String,
             default: 'text',
         },
-        value: {
+        modelValue: {
             type: String,
             default: '',
-        }
+        },
     },
-    emits: ['update'],
+    emits: ['update:modelValue'],
 }
 </script>
 
 <style lang="scss">
+.c-text-field{
+  background-color: var(--color-input);
+  color: var(--color-font);
+  border-radius: 10px;
+  width: 100%;
+  height: 2em;
+}
+.c-text-field__input{
+  background-color: transparent;
+  color: var(--color-font);
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+}
+::placeholder{
+    color:var(--color-font);
+}
 </style>

@@ -31,7 +31,7 @@ export default {
     justify-content: center;
     align-items: center;
     height: 80%;
-    width: 60%;
+    width: 40%;
     gap: 10px;
 }
 .l-centered__form{

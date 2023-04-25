@@ -5,7 +5,6 @@
 <script>
 export default{
     name: 'CButton',
-    inheritAttrs: false,
     props:{
         id:{
             type: String,

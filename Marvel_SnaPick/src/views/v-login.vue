@@ -1,16 +1,16 @@
 <template>
   <l-centered>
       <template #form>
-          <c-text-field id="username_input" placeholder="Usuario" />
-          <c-text-field id="password_input" placeholder="Contraseña" :type="type" />
+          <c-text-field id="username_input" placeholder="Usuario" v-model="username"/>
+          <c-text-field id="password_input" placeholder="Contraseña" :type="type" v-model="password"/>
           <div class="v-login">
             <span class="v-login__error" v-if="errorVisibility">{{ errorMessage }}</span>
             <span class="v-login__success" v-else-if="success">{{ successMessage }}</span>
           </div>
       </template>
       <template #button>
-          <c-button @click="checkLogin" innerText="Confirmar"></c-button>
-          <c-button innerText="Registrarse"></c-button>
+          <c-button id="confirm_button" @click="checkLogin" innerText="Confirmar"></c-button>
+          <c-button id="register_button" innerText="Registrarse"></c-button>
       </template>
   </l-centered>
 </template>
@@ -42,14 +42,17 @@ export default {
     checkLogin() {
       if (this.username === 'Álvaro' && this.password === '1234') {
         this.success = true;
-        this.errorVisible = false;
+        this.errorVisibility = false;
       } else {
         this.sendError();
       }
     },
     sendError() {
-      this.errorVisible = true;
+      this.errorVisibility = true;
       this.success = false;
+      setTimeout(()=>{
+        this.errorVisibility=false;
+      },5000)
     },
     /* showPassword(){
       this.type='password';
@@ -62,4 +65,6 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+
+</style>
