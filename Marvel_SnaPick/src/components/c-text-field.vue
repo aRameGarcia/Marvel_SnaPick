@@ -50,7 +50,7 @@ export default {
 .c-text-field:hover {
   outline-width: 2px;
   outline-style: solid;
-  outline-color: red;
+  outline-color: var(--color-button-hover);
 }
 
 .c-text-field:focus-within {
@@ -70,12 +70,5 @@ export default {
 
 .c-text-field__input:focus {
   outline: none;
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px var(--color-input) inset !important;
 }
 </style>

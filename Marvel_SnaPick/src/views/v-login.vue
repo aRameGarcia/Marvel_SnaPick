@@ -1,11 +1,14 @@
 <template>
   <l-centered>
     <template #header>
-      <span class="v-login__header--user">Usuario logeado</span>
-      <img class="v-login__header--image" src="../assets/cards/logo.png" alt="Marvel SnaPick" />
-      <div class="v-login__header--container">
-        <button class="v-login__header--button">PERFIL</button>
-      </div>
+      <c-header>
+        <template #user>
+          <c-user></c-user>
+        </template>
+        <template #buttonProfile>
+          <c-button-profile></c-button-profile>
+        </template>
+      </c-header>
     </template>
     <template #form>
       <c-text-field id="username_input" placeholder="Usuario" v-model="username" />
@@ -23,6 +26,9 @@
 
 <script>
 import LCentered from '../layouts/l-centered.vue'
+import CHeader from '../components/c-header.vue'
+import CButtonProfile from '../components/c-button-profile.vue'
+import CUser from '../components/c-user.vue'
 import CTextField from '../components/c-text-field.vue'
 import CButton from '../components/c-button.vue'
 import { userStore } from '../stores/user'
@@ -32,7 +38,10 @@ export default {
   components: {
     LCentered,
     CTextField,
-    CButton
+    CButton,
+    CButtonProfile,
+    CHeader,
+    CUser
   },
   data() {
     return {
@@ -79,26 +88,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.v-login__header--user {
-  font-weight: bold;
-  width: 150px;
-}
-
-.v-login__header--image {
-  width: 400px;
-  height: 200px;
-}
-
-.v-login__header--container {
-  display: flex;
-  justify-content: end;
-  width: 150px;
-}
-
-.v-login__header--button {
-  max-width: 80px;
-  max-height: 40px;
-}
-</style>

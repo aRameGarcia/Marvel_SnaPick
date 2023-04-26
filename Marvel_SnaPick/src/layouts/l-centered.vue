@@ -28,12 +28,6 @@ export default {
   align-items: center;
   height: 100%;
 }
-.l-centered__header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-}
 .l-centered__grid {
   display: flex;
   flex-direction: column;

@@ -1,6 +1,6 @@
 <template>
-    <div v-for="card in cards" :key="card.CardDefId">
-        <img :src="'../src/assets/cards/'+card.Img" alt="card.CardDefId">
+    <div>
+        <img  v-for="card in cards" :key="card.CardDefId" :src="'../src/assets/cards/'+card.Img" alt="card.CardDefId">
     </div>
     <div v-if="error">
         Ha habido un error al cargar las cartas.
