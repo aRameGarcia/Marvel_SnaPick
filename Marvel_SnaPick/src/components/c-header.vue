@@ -2,7 +2,7 @@
     <div class="c-header">
         <slot v-if="$slots.user" name="user"/>
         <img class="c-header--image" src="../assets/cards/logo.png" alt="Marvel SnaPick">
-        <div class="c-header--container">
+        <div class="c-header--container--user">
             <slot v-if="$slots.buttonProfile" name="buttonProfile"/>
         </div>
     </div>
@@ -24,7 +24,10 @@ export default {
 .c-header--image{
     height: 120px;
 }
-.c-header--container{
+/* .c-header--image:first-child{
+    margin: 0 auto;
+} */
+.c-header--container--user{
     display: flex;
     justify-content: end;
     width: 150px;
