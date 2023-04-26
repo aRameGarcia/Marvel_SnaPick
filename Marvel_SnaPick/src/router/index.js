@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { userStore } from '../stores/user'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -9,19 +10,32 @@ const router = createRouter({
       component: () => import('../views/v-login.vue')
     },
     {
+      path: '/registro',
+      name:'register',
+      component: () => import('../views/v-register.vue')
+    },
+    {
       path: '/coleccion',
       name:'collection',
       component: () => import('../views/v-collection.vue')
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name:'default',
+      component: () => import('../views/v-login.vue')
     }
-    /* {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    } */
+    
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.name === 'unknown') {
+    next({name:'login'})
+  }else if(to.name !== 'login' && to.name!=='register' && !userStore().isLogged){
+    next({name:'login'})
+  }else{
+    next()
+  }
 })
 
 export default router

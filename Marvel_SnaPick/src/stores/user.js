@@ -3,7 +3,8 @@ import { apiStore } from './api'
 
 export const userStore = defineStore('user', {
    state: () => ({
-      isLogged: false
+      isLogged: false,
+      userLogged: '',
    }),
 
    actions: {
@@ -15,6 +16,7 @@ export const userStore = defineStore('user', {
             .doRequest({ method, url, payload })
             .then((res) => {
                this.isLogged = true
+               this.userLogged=payload.username;
                return res
             })
             .catch(() => {

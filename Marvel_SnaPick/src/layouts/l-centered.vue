@@ -3,7 +3,13 @@
     <div class="l-centered__header">
       <slot name="header"></slot>
     </div>
+    <div l-centered__title>
+      <slot name="title"></slot>
+    </div>
     <div class="l-centered__grid">
+      <div class="l-centered__cards">
+        <slot name="cards"></slot>
+      </div>
       <div class="l-centered__form">
         <slot name="form"></slot>
       </div>
@@ -27,17 +33,27 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100%;
+  gap: 10px;
 }
 .l-centered__header{
   width: 100%;
+  height: 20%;
+}
+.l-centered__title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 10%;
+  font-size: larger;
+  font-weight: bold;
 }
 .l-centered__grid {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 80%;
-  width: 40%;
+  height: 70%;
+  width: 100%;
   gap: 10px;
 }
 .l-centered__form {
@@ -45,7 +61,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 40%;
   gap: 10px;
   margin: 20px;
 }
@@ -54,7 +70,15 @@ export default {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 40%;
   gap: 20px;
+}
+.l-centered__cards{
+  display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: start;
+    width: 100%;
 }
 </style>

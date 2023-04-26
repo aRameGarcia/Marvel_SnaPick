@@ -2,13 +2,13 @@
   <l-centered>
     <template #header>
       <c-header>
-        <template #user>
-          <c-user></c-user>
-        </template>
         <template #buttonProfile>
-          <c-button-profile></c-button-profile>
+          <c-button class="v-login__button--profile" innerText="PERFIL"></c-button>
         </template>
       </c-header>
+    </template>
+    <template #title>
+      <h1>INICIAR SESIÓN</h1>
     </template>
     <template #form>
       <c-text-field id="username_input" placeholder="Usuario" v-model="username" />
@@ -19,7 +19,7 @@
     </template>
     <template #button>
       <c-button id="confirm_button" @click="doLogin" innerText="CONFIRMAR"></c-button>
-      <c-button id="register_button" innerText="REGISTRARSE"></c-button>
+      <c-button id="register_button" @click="goRegister" innerText="REGISTRARSE"></c-button>
     </template>
   </l-centered>
 </template>
@@ -27,7 +27,6 @@
 <script>
 import LCentered from '../layouts/l-centered.vue'
 import CHeader from '../components/c-header.vue'
-import CButtonProfile from '../components/c-button-profile.vue'
 import CUser from '../components/c-user.vue'
 import CTextField from '../components/c-text-field.vue'
 import CButton from '../components/c-button.vue'
@@ -39,7 +38,6 @@ export default {
     LCentered,
     CTextField,
     CButton,
-    CButtonProfile,
     CHeader,
     CUser
   },
@@ -78,6 +76,9 @@ export default {
       setTimeout(() => {
         this.errorVisibility = false
       }, 5000)
+    },
+    goRegister() {
+      this.$router.push({ name: 'register' })
     }
     /* showPassword(){
       this.type='password';
@@ -88,3 +89,14 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.v-login__button--profile {
+  max-width: 80px;
+  max-height: 40px;
+  border-radius: 5px;
+  background-color: var(--color-button);
+  color: var(--color-background-light);
+  font-weight: bold;
+}
+</style>
