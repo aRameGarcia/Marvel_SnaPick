@@ -26,4 +26,8 @@ export default{
     padding: 5px;
     font-weight: bold;
 }
+.c-button:hover{
+    cursor: pointer;
+    
+}
 </style>

@@ -28,6 +28,9 @@ export default {
   align-items: center;
   height: 100%;
 }
+.l-centered__header{
+  width: 100%;
+}
 .l-centered__grid {
   display: flex;
   flex-direction: column;

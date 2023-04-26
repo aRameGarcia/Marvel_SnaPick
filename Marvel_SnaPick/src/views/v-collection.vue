@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import { userStore } from '../stores/user'
 import {cardsStore} from '../stores/cards'
 
 export default {
