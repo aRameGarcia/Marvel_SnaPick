@@ -16,7 +16,7 @@ export const userStore = defineStore('user', {
             .doRequest({ method, url, payload })
             .then((res) => {
                this.isLogged = true
-               this.userLogged=payload.username;
+               this.userLogged=username;
                return res
             })
             .catch(() => {

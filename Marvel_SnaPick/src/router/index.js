@@ -28,10 +28,12 @@ const router = createRouter({
   ]
 })
 
+const routesFree=['login','register']
+
 router.beforeEach((to, from, next) => {
   if (to.name === 'unknown') {
     next({name:'login'})
-  }else if(to.name !== 'login' && to.name!=='register' && !userStore().isLogged){
+  }else if(!routesFree.includes(to.name) && !userStore().isLogged){
     next({name:'login'})
   }else{
     next()

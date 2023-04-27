@@ -1,9 +1,9 @@
 <template>
     <div class="c-header">
         <slot v-if="$slots.user" name="user"/>
-        <img class="c-header--image" src="../assets/cards/logo.png" alt="Marvel SnaPick">
-        <div class="c-header--container--user">
-            <slot v-if="$slots.buttonProfile" name="buttonProfile"/>
+        <img class="c-header__image" src="../assets/cards/logo.png" alt="Marvel SnaPick">
+        <div class="c-header__button--container" v-if="$slots.buttonProfile">
+            <slot name="buttonProfile"/>
         </div>
     </div>
 </template>
@@ -20,14 +20,16 @@ export default {
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    /* object-fit: contain; */
 }
-.c-header--image{
+.c-header__image{
+    /* object-position: 50% 50%; */
     height: 120px;
 }
-/* .c-header--image:first-child{
+.c-header__image:only-child{
     margin: 0 auto;
-} */
-.c-header--container--user{
+}
+.c-header__button--container{
     display: flex;
     justify-content: end;
     width: 150px;

@@ -2,9 +2,6 @@
   <l-centered>
     <template #header>
       <c-header>
-        <template #buttonProfile>
-          <c-button class="v-login__button--profile" innerText="PERFIL"></c-button>
-        </template>
       </c-header>
     </template>
     <template #title>
