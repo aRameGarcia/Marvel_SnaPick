@@ -16,18 +16,20 @@ export default {
 
 <style>
 .c-header{
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    /* object-fit: contain; */
 }
 .c-header__image{
-    /* object-position: 50% 50%; */
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin: auto;
+    /* top: 0, left: 50% , transform: translate(-50%,0%); es otra forma de centrarlo*/
     height: 120px;
-}
-.c-header__image:only-child{
-    margin: 0 auto;
+
 }
 .c-header__button--container{
     display: flex;

@@ -32,12 +32,13 @@ const routesFree=['login','register']
 
 router.beforeEach((to, from, next) => {
   if (to.name === 'unknown') {
-    next({name:'login'})
-  }else if(!routesFree.includes(to.name) && !userStore().isLogged){
-    next({name:'login'})
-  }else{
-    next()
+    return next({name:'login'})
   }
+  if(!routesFree.includes(to.name) && !userStore().isLogged){
+    return next({name:'login'})
+  }
+  next()
+  
 })
 
 export default router

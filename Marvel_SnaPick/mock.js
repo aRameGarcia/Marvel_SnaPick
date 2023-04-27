@@ -2,6 +2,8 @@ const express = require('express')
 const corss = require('cors')
 const app = express()
 const port = 8081
+const users =[{username: 'Álvaro', password: '1234'},
+            {username: 'Mario', password: '0987'}]
 
 app.listen(port, () => {
    console.log(`Example app listening on port ${port}`)
@@ -39,12 +41,20 @@ app.use(function (req, res, next) {
 })
 
 app.post('/user/login', (req, res) => {
-   const user = req.body
-   if (user.username === 'Álvaro' && user.password === '1234') {
+   const { username, password}  = req.body
+   console.log('user', { username, password})
+   console.log('users', users)
+   if (users.some(user=>user['username']===username) && users.some(user=>user['password']===password)) {
       res.send(true)
    } else {
       res.status(404).send({ data: 'User not found!' })
    }
+})
+
+app.post('/user/register', (req, res) => {
+   const user = req.body;
+   console.log('user', user)
+   res.send(user)
 })
 
 app.get('/cards/loadCards', (req, res) => {

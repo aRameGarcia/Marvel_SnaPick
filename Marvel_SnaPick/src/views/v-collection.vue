@@ -60,9 +60,7 @@ export default {
             }
         },
         async loadUser() {
-            console.log(userStore().userLogged);
             this.userLogged = userStore().userLogged;
-            console.log(this.userLogged);
         }
     },
     created() {
