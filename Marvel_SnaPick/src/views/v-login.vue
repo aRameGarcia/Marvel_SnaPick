@@ -15,8 +15,8 @@
       </div>
     </template>
     <template #button>
-      <c-button id="confirm_button" @click="doLogin" innerText="CONFIRMAR"></c-button>
-      <c-button id="register_button" @click="goRegister" innerText="REGISTRARSE"></c-button>
+      <c-button @click="doLogin" innerText="CONFIRMAR"></c-button>
+      <c-button @click="goRegister" innerText="REGISTRARSE"></c-button>
     </template>
   </l-centered>
 </template>
@@ -86,14 +86,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.v-login__button--profile {
-  max-width: 80px;
-  max-height: 40px;
-  border-radius: 5px;
-  background-color: var(--color-button);
-  color: var(--color-background-light);
-  font-weight: bold;
-}
-</style>

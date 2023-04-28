@@ -25,22 +25,20 @@ export const userStore = defineStore('user', {
             })
       },
 
-      /* async register({ username, password }) {
+      async register({ username, password }) {
          const method = 'POST'
          const url = '/user/register'
          const payload = { username, password }
          return apiStore()
          .doRequest({ method, url, payload })
          .then((res) => {
-            this.isLogged = true
-            this.userLogged=username;
             return res
          })
-         .catch(() => {
-            this.isLogged = false
+         .catch((error) => {
+            console.log(error)
             return false
          })
-      }, */
+      },
 
       logout() {
          this.isLogged = false

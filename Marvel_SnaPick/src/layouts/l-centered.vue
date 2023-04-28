@@ -74,11 +74,8 @@ export default {
   gap: 20px;
 }
 .l-centered__cards{
-  display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    align-items: start;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
     width: 100%;
 }
 </style>

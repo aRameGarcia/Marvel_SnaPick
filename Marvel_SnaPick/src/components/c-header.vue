@@ -1,8 +1,8 @@
 <template>
     <div class="c-header">
         <slot v-if="$slots.user" name="user"/>
-        <img class="c-header__image" src="../assets/cards/logo.png" alt="Marvel SnaPick">
-        <div class="c-header__button--container" v-if="$slots.buttonProfile">
+        <img class="c-header__image" src="https://lf19-fe-tos.bytedgame.com/obj/g-marketing-assets-va/2022_05_19_09_23_59/1643367095102_s1069673.png" alt="Marvel SnaPick">
+        <div class="c-header__button--wrapper" v-if="$slots.buttonProfile">
             <slot name="buttonProfile"/>
         </div>
     </div>
@@ -31,7 +31,7 @@ export default {
     height: 120px;
 
 }
-.c-header__button--container{
+.c-header__button--wrapper{
     display: flex;
     justify-content: end;
     width: 150px;
