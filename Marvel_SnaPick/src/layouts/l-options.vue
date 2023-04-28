@@ -1,31 +1,39 @@
 <template>
     <section class="l-options">
+        <div class="l-options__header">
+            <slot name="header"></slot>
+        </div>
+        <div l-options__title>
+            <slot name="title"></slot>
+        </div>
         <div class="l-options__button">
-          <slot name="button"></slot>
+            <slot name="button"></slot>
         </div>
     </section>
-  </template>
+</template>
   
-  <script>
-  export default {
-    name: 'LCentered'
-  }
-  </script>
+<script>
+export default {
+    name: 'LOptions'
+}
+</script>
   
-  <style lang="scss">
-  .l-centered {
+<style lang="scss">
+.l-options {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
     gap: 10px;
-  }
-  .l-centered__header{
+}
+
+.l-options__header {
     width: 100%;
     height: 20%;
-  }
-  .l-centered__title{
+}
+
+.l-options__title {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,36 +41,23 @@
     height: 10%;
     font-size: larger;
     font-weight: bold;
-  }
-  .l-centered__grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 70%;
-    width: 100%;
-    gap: 10px;
-  }
-  .l-centered__form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 40%;
-    gap: 10px;
-    margin: 20px;
-  }
-  .l-centered__button {
+}
+.l-options__button {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 40%;
+    width: 100%;
+    height: 70%;
     gap: 20px;
-  }
-  .l-centered__cards{
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-      width: 100%;
-  }
-  </style>
+}
+/* .l-options__grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 70%;
+  width: 100%;
+  gap: 10px;
+} */
+</style>
   

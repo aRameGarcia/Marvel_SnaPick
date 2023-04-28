@@ -1,5 +1,5 @@
 <template>
-    <l-centered>
+    <l-options>
         <template #header>
             <c-header>
                 <template #user>
@@ -14,17 +14,15 @@
             <h1>PERFIL</h1>
         </template>
         <template #button>
-            <div class="v-profile--options">
-                <c-button class="v-profile__button-option" innerText="CAMBIAR NOMBRE"></c-button>
-                <c-button class="v-profile__button-option" innerText="CAMBIAR CONTRASEÑA"></c-button>
-                <c-button class="v-profile__button-option" innerText="COLECCIÓN"></c-button>
-            </div>
+        <c-button class="v-profile__button--option" innerText="CAMBIAR NOMBRE"></c-button>
+        <c-button class="v-profile__button--option" innerText="CAMBIAR CONTRASEÑA"></c-button>
+        <c-button class="v-profile__button--option" innerText="COLECCIÓN"></c-button>
         </template>
-    </l-centered>
+    </l-options>
 </template>
 
 <script>
-import LCentered from '../layouts/l-centered.vue'
+import LOptions from '../layouts/l-options.vue'
 import CHeader from '../components/c-header.vue'
 import CUser from '../components/c-user.vue'
 import CButton from '../components/c-button.vue'
@@ -32,10 +30,10 @@ import { userStore } from '../stores/user'
 
 export default {
     components: {
-        LCentered,
-        CButton,
+        LOptions,
         CHeader,
         CUser,
+        CButton,
     },
     data() {
         return {
@@ -62,15 +60,9 @@ export default {
     color: var(--color-background-light);
     font-weight: bold;
 }
-.v-profile--options{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-}
-.v-profile__button-option{
-    height: 300px;
-    border-radius: 5px;
-    width: 30%;
+.v-profile__button--option {
+    height: 80%;
+    border-radius: 10px;
+    width: 20%;
 }
 </style>
