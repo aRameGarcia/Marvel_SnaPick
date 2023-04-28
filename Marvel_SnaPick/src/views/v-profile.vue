@@ -14,9 +14,9 @@
             <h1>PERFIL</h1>
         </template>
         <template #button>
-        <c-button class="v-profile__button--option" @click="goRename" innerText="CAMBIAR NOMBRE"></c-button>
-        <c-button class="v-profile__button--option" @click="goRepassword" innerText="CAMBIAR CONTRASEÑA"></c-button>
-        <c-button class="v-profile__button--option" @click="goCollection" innerText="COLECCIÓN"></c-button>
+        <c-button class="v-profile__button--option" @click="goPlace('rename')" innerText="CAMBIAR NOMBRE"></c-button>
+        <c-button class="v-profile__button--option" @click="goPlace('repassword')" innerText="CAMBIAR CONTRASEÑA"></c-button>
+        <c-button class="v-profile__button--option" @click="goPlace('collection')" innerText="COLECCIÓN"></c-button>
         </template>
     </l-options>
 </template>
@@ -44,16 +44,9 @@ export default {
         async loadUser() {
             this.userLogged = userStore().userLogged;
         },
-        goRename() {
-            this.$router.push({ name: 'rename' });
+        goPlace(place) {
+            this.$router.push({ name: place });
         },
-        goRepassword() {
-            this.$router.push({ name: 'repassword' });
-        },
-        goCollection() {
-            this.$router.push({ name: 'collection' });
-        },
-
     },
     created() {
         this.loadUser();

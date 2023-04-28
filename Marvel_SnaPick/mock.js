@@ -2,11 +2,13 @@ const express = require('express')
 const corss = require('cors')
 const app = express()
 const port = 8081
-const users =[
-   {username: 'Álvaro', password: '1234'},
-   {username: 'Mario', password: '0987'}
+const users = [
+   { username: 'Álvaro', password: '1234' },
+   { username: 'Mario', password: '0987' }
 ]
-const cards=[
+let userLogged = ''
+let passLogged = ''
+const cards = [
    {
       CardDefId: 'Domino',
       series: '1',
@@ -120,10 +122,12 @@ app.use(function (req, res, next) {
 })
 
 app.post('/user/login', (req, res) => {
-   const { username, password}  = req.body
-   console.log('user', { username, password})
-   console.log('users', users)
-   if (users.some(user=>user['username']===username && user['password']===password)) {
+   const { username, password } = req.body
+   if (users.some(u =>
+      u['username'] === username
+      && u['password'] === password)) {
+      userLogged = username
+      passLogged = password
       res.send(true)
    } else {
       res.status(404).send({ data: 'User not found!' })
@@ -131,18 +135,45 @@ app.post('/user/login', (req, res) => {
 })
 
 app.post('/user/register', (req, res) => {
-   const user = req.body;
-   console.log('user', user)
-   users.push(user)
-   res.send(user)
+   const { username, password } = req.body
+   console.log('user', { username, password })
+   //busca si existe en el array un objeto cuyo username coincida con el nuevo username
+   if (users.some(u =>
+      u['username'] === username)) {
+      res.status(404).send({ data: 'User repeat!' })
+   } else {
+      users.push({ username, password })
+      res.send(true)
+   }
 })
 
-/* app.post('/user/rename', (req, res) => {
-   const user = req.body;
-   console.log('name', user)
-   users.push(user)
-   res.send(user)
-}) */
+app.post('/user/rename', (req, res) => {
+   const { oldUsername, newUsername } = req.body;
+   console.log('name', { oldUsername, newUsername })
+   if (oldUsername === userLogged) {
+      //busca en el array el objeto cuyo username coincida con oldUsername y lo cambia a newUsername
+      users.find(u => u['username'] === oldUsername).username = newUsername
+      userLogged = newUsername
+      console.log(users)
+      res.send(true)
+   } else {
+      res.status(404).send({ data: 'User does not match!' })
+   }
+})
+
+app.post('/user/repassword', (req, res) => {
+   const { oldPassword, newPassword } = req.body;
+   console.log('pass', { oldPassword, newPassword })
+   if (oldPassword === passLogged) {
+      //busca en el array el objeto cuyo password coincida con oldPassword y lo cambia a newPassword
+      users.find(u => u['password'] === oldPassword).password = newPassword
+      passLogged = newPassword
+      console.log(users)
+      res.send(true)
+   } else {
+      res.status(404).send({ data: 'User does not match!' })
+   }
+})
 
 app.get('/cards/loadCards', (req, res) => {
    const response = cards;

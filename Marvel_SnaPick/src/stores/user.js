@@ -40,10 +40,10 @@ export const userStore = defineStore('user', {
          })
       },
 
-      /* async rename({ newUsername, oldUsername }) {
+      async rename({ oldUsername, newUsername }) {
          const method = 'POST'
-         const url = '/user/register'
-         const payload = { username, password }
+         const url = '/user/rename'
+         const payload = { oldUsername, newUsername }
          return apiStore()
          .doRequest({ method, url, payload })
          .then((res) => {
@@ -53,7 +53,22 @@ export const userStore = defineStore('user', {
             console.log(error)
             return false
          })
-      }, */
+      },
+
+      async repassword({ oldPassword, newPassword }) {
+         const method = 'POST'
+         const url = '/user/repassword'
+         const payload = { oldPassword, newPassword }
+         return apiStore()
+         .doRequest({ method, url, payload })
+         .then((res) => {
+            return res
+         })
+         .catch((error) => {
+            console.log(error)
+            return false
+         })
+      },
 
       logout() {
          this.isLogged = false

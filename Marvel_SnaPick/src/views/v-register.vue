@@ -10,9 +10,9 @@
     <template #form>
       <c-text-field id="username_input" placeholder="Usuario" v-model="username" />
       <c-text-field id="password_input" placeholder="Contraseña" :type="type" v-model="password" />
-      <!--<div class="v-register">
+      <div class="v-register">
           <span class="v-register--error" v-if="errorVisibility">{{ errorMessage }}</span>
-        </div> -->
+        </div>
     </template>
     <template #button>
       <c-button @click="doRegister" innerText="CONFIRMAR"></c-button>
@@ -40,8 +40,8 @@ export default {
     return {
       username: '',
       password: '',
-      /* errorVisibility: false,
-      errorMessage: 'Credenciales Incorrectas!!!', */
+      errorVisibility: false,
+      errorMessage: 'Nombre de Usuario no disponible!!!',
       type: 'password'
     }
   },
@@ -66,13 +66,12 @@ export default {
     cancelRegister() {
       this.$router.push({ name: 'login' })
     },
-    /* sendError() {
+    sendError() {
       this.errorVisibility = true
-      this.success = false
       setTimeout(() => {
         this.errorVisibility = false
       }, 5000)
-    } */
+    }
     /* showPassword(){
       this.type='password';
       if(this.type==='password'){

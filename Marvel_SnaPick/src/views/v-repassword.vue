@@ -8,14 +8,14 @@
             <h1>CAMBIAR CONTRASEÑA</h1>
         </template>
         <template #form>
-            <c-text-field placeholder="Antiguo Nombre" v-model="oldPassword" />
-            <c-text-field placeholder="Nuevo Nombre" v-model="newPassword" />
+            <c-text-field placeholder="Antigua Contraseña" v-model="oldPassword" />
+            <c-text-field placeholder="Nueva Contraseña" v-model="newPassword" />
             <div class="v-repassword">
                 <span class="v-repassword--error" v-if="errorVisibility">{{ errorMessage }}</span>
             </div>
         </template>
         <template #button>
-            <c-button @click="cancelRepassword" innerText="CONFIRMAR"></c-button>
+            <c-button @click="doRepassword" innerText="CONFIRMAR"></c-button>
             <c-button @click="cancelRepassword" innerText="CANCELAR"></c-button>
         </template>
     </l-centered>
@@ -45,14 +45,14 @@ export default {
         }
     },
     methods: {
-        /* async doRepassword() {
+        async doRepassword() {
           try {
-            const { username, password } = this
+            const { oldPassword, newPassword } = this
     
-            const doRegister = await userStore().register({ username, password })
+            const doRepassword = await userStore().repassword({ oldPassword, newPassword })
     
-            if (doRegister) {
-              this.$router.push({ name: 'login' })
+            if (doRepassword) {
+              this.$router.push({ name: 'profile' })
             } else {
               this.sendError()
             }
@@ -60,14 +60,13 @@ export default {
           catch (error) {
             console.log(error)
           }
-        }, */
+        },
 
         cancelRepassword() {
             this.$router.push({ name: 'profile' })
         },
         sendError() {
           this.errorVisibility = true
-          this.success = false
           setTimeout(() => {
             this.errorVisibility = false
           }, 5000)

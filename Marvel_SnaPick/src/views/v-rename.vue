@@ -8,14 +8,14 @@
             <h1>CAMBIAR NOMBRE</h1>
         </template>
         <template #form>
-            <c-text-field placeholder="Usuario" v-model="oldUsername" />
-            <c-text-field placeholder="Contraseña" v-model="newUsername" />
+            <c-text-field placeholder="Antiguo Nombre" v-model="oldUsername" />
+            <c-text-field placeholder="Nuevo Nombre" v-model="newUsername" />
             <div class="v-rename">
                 <span class="v-rename--error" v-if="errorVisibility">{{ errorMessage }}</span>
             </div>
         </template>
         <template #button>
-            <c-button @click="cancelRename" innerText="CONFIRMAR"></c-button>
+            <c-button @click="doRename" innerText="CONFIRMAR"></c-button>
             <c-button @click="cancelRename" innerText="CANCELAR"></c-button>
         </template>
     </l-centered>
@@ -41,18 +41,18 @@ export default {
             oldUsername: '',
             newUsername: '',
             errorVisibility: false,
-            errorMessage: 'Credenciales Incorrectas!!!',
+            errorMessage: 'El antiguo nombre no coincide!!!',
         }
     },
     methods: {
-        /* async doRename() {
+        async doRename() {
           try {
-            const { username, password } = this
+            const { oldUsername, newUsername } = this
     
-            const doRegister = await userStore().register({ username, password })
+            const doRename = await userStore().rename({ oldUsername, newUsername })
     
-            if (doRegister) {
-              this.$router.push({ name: 'login' })
+            if (doRename) {
+              this.$router.push({ name: 'profile' })
             } else {
               this.sendError()
             }
@@ -60,14 +60,13 @@ export default {
           catch (error) {
             console.log(error)
           }
-        }, */
+        },
 
         cancelRename() {
             this.$router.push({ name: 'profile' })
         },
         sendError() {
           this.errorVisibility = true
-          this.success = false
           setTimeout(() => {
             this.errorVisibility = false
           }, 5000)
