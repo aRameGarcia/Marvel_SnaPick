@@ -137,6 +137,13 @@ app.post('/user/register', (req, res) => {
    res.send(user)
 })
 
+/* app.post('/user/rename', (req, res) => {
+   const user = req.body;
+   console.log('name', user)
+   users.push(user)
+   res.send(user)
+}) */
+
 app.get('/cards/loadCards', (req, res) => {
    const response = cards;
    res.send(response)

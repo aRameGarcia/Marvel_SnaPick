@@ -20,7 +20,17 @@ const router = createRouter({
       component: () => import('../views/v-profile.vue')
     },
     {
-      path: '/coleccion',
+      path: '/perfil/cambiar-nombre',
+      name:'rename',
+      component: () => import('../views/v-rename.vue')
+    },
+    {
+      path: '/perfil/cambiar-contraseña',
+      name:'repassword',
+      component: () => import('../views/v-repassword.vue')
+    },
+    {
+      path: '/perfil/coleccion',
       name:'collection',
       component: () => import('../views/v-collection.vue')
     },

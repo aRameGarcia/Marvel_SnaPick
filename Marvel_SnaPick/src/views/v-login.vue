@@ -11,7 +11,7 @@
       <c-text-field id="username_input" placeholder="Usuario" v-model="username" />
       <c-text-field id="password_input" placeholder="Contraseña" :type="type" v-model="password" />
       <div class="v-login">
-        <span class="v-login__error" v-if="errorVisibility">{{ errorMessage }}</span>
+        <span class="v-login--error" v-if="errorVisibility">{{ errorMessage }}</span>
       </div>
     </template>
     <template #button>
