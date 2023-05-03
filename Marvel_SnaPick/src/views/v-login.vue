@@ -8,6 +8,9 @@
       <h1>INICIAR SESIÓN</h1>
     </template>
     <template #form>
+      <!-- <div class="v-login">
+        <span class="v-login--msg">{{ msg }}</span>
+      </div> -->
       <c-text-field id="username_input" placeholder="Usuario" v-model="username" />
       <c-text-field id="password_input" placeholder="Contraseña" :type="type" v-model="password" />
       <div class="v-login">
@@ -38,6 +41,12 @@ export default {
     CHeader,
     CUser
   },
+  /* props:{
+    msg: {
+      type: String,
+      default:''
+    },
+  }, */
   data() {
     return {
       username: '',

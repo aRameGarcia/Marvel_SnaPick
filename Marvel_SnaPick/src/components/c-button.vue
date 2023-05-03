@@ -25,10 +25,10 @@ export default{
     border: none;
     padding: 5px;
     font-weight: bold;
-    box-shadow: 4px 4px 8px 0 var(--color-button-hover);
+    box-shadow: 0px 4px 8px 0 var(--color-button-hover);
 }
 .c-button:hover{
     cursor: pointer;
-    box-shadow: 8px 8px 16px 0 var(--color-button-hover);
+    box-shadow: 0px 8px 16px 0 var(--color-button-hover);
 }
 </style>

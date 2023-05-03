@@ -7,7 +7,6 @@ const users = [
    { username: 'Mario', password: '0987' }
 ]
 let userLogged = ''
-let passLogged = ''
 const cards = [
    {
       CardDefId: 'Domino',
@@ -127,7 +126,6 @@ app.post('/user/login', (req, res) => {
       u['username'] === username
       && u['password'] === password)) {
       userLogged = username
-      passLogged = password
       res.send(true)
    } else {
       res.status(404).send({ data: 'User not found!' })
@@ -164,10 +162,9 @@ app.post('/user/rename', (req, res) => {
 app.post('/user/repassword', (req, res) => {
    const { oldPassword, newPassword } = req.body;
    console.log('pass', { oldPassword, newPassword })
-   if (oldPassword === passLogged) {
+   if (oldPassword === users.find(u => u['username'] === userLogged).password) {
       //busca en el array el objeto cuyo password coincida con oldPassword y lo cambia a newPassword
       users.find(u => u['password'] === oldPassword).password = newPassword
-      passLogged = newPassword
       console.log(users)
       res.send(true)
    } else {

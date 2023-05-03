@@ -47,6 +47,7 @@ export const userStore = defineStore('user', {
          return apiStore()
          .doRequest({ method, url, payload })
          .then((res) => {
+            this.userLogged=newUsername;
             return res
          })
          .catch((error) => {

@@ -53,7 +53,7 @@ export default {
         const doRegister = await userStore().register({ username, password })
 
         if (doRegister) {
-          this.$router.push({ name: 'login' })
+          this.$router.push({ name: 'login', params:{msg:'Usuario registrado con exito'}})
         } else {
           this.sendError()
         }
