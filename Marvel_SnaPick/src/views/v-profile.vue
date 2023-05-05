@@ -12,11 +12,15 @@
         </template>
         <template #title>
             <h1>PERFIL</h1>
+            <div class="v-profile" v-if="msg !== undefined">
+                <span class="v-profile--msg">{{ msg }}</span>
+            </div>
         </template>
         <template #button>
-        <c-button class="v-profile__button--option" @click="goPlace('rename')" innerText="CAMBIAR NOMBRE"></c-button>
-        <c-button class="v-profile__button--option" @click="goPlace('repassword')" innerText="CAMBIAR CONTRASEÑA"></c-button>
-        <c-button class="v-profile__button--option" @click="goPlace('collection')" innerText="COLECCIÓN"></c-button>
+            <c-button class="v-profile__button--option" @click="goPlace('rename')" innerText="CAMBIAR NOMBRE"></c-button>
+            <c-button class="v-profile__button--option" @click="goPlace('repassword')"
+                innerText="CAMBIAR CONTRASEÑA"></c-button>
+            <c-button class="v-profile__button--option" @click="goPlace('collection')" innerText="COLECCIÓN"></c-button>
         </template>
     </l-options>
 </template>
@@ -38,6 +42,12 @@ export default {
     data() {
         return {
             userLogged: '',
+        }
+    },
+    props: {
+        msg: {
+            type: String,
+            required: false,
         }
     },
     methods: {
@@ -63,6 +73,7 @@ export default {
     color: var(--color-background-light);
     font-weight: bold;
 }
+
 .v-profile__button--option {
     height: 80%;
     border-radius: 10px;

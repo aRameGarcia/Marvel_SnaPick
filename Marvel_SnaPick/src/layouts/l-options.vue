@@ -3,7 +3,7 @@
         <div class="l-options__header">
             <slot name="header"></slot>
         </div>
-        <div l-options__title>
+        <div class="l-options__title">
             <slot name="title"></slot>
         </div>
         <div class="l-options__button">
@@ -35,12 +35,11 @@ export default {
 
 .l-options__title {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 10%;
-    font-size: larger;
-    font-weight: bold;
 }
 .l-options__button {
     display: flex;
@@ -51,13 +50,5 @@ export default {
     height: 70%;
     gap: 20px;
 }
-/* .l-options__grid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 70%;
-  width: 100%;
-  gap: 10px;
-} */
 </style>
   

@@ -52,7 +52,7 @@ export default {
             const doRepassword = await userStore().repassword({ oldPassword, newPassword })
     
             if (doRepassword) {
-              this.$router.push({ name: 'profile' })
+              this.$router.push({ name: 'profile', params: {msg:'Se ha cambiado la contraseña exitosamente'}})
             } else {
               this.sendError()
             }

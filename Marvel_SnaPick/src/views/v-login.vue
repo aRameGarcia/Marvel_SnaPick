@@ -8,11 +8,25 @@
       <h1>INICIAR SESIÓN</h1>
     </template>
     <template #form>
-      <!-- <div class="v-login">
+      <div class="v-login" v-if="msg !== undefined">
         <span class="v-login--msg">{{ msg }}</span>
-      </div> -->
-      <c-text-field id="username_input" placeholder="Usuario" v-model="username" />
-      <c-text-field id="password_input" placeholder="Contraseña" :type="type" v-model="password" />
+      </div>
+      <c-text-field 
+        id="username_input"
+        placeholder="Usuario"
+        v-model="username" />
+      <c-text-field 
+        id="password_input"
+        placeholder="Contraseña"
+        :type="type"
+        v-model="password">
+          <template #icon>
+            <c-icon
+              iconName="eye"
+              @click="showPassword"         
+            />
+          </template>
+      </c-text-field>
       <div class="v-login">
         <span class="v-login--error" v-if="errorVisibility">{{ errorMessage }}</span>
       </div>
@@ -29,6 +43,7 @@ import LCentered from '../layouts/l-centered.vue'
 import CHeader from '../components/c-header.vue'
 import CUser from '../components/c-user.vue'
 import CTextField from '../components/c-text-field.vue'
+import CIcon from '../components/c-icon.vue'
 import CButton from '../components/c-button.vue'
 import { userStore } from '../stores/user'
 
@@ -39,21 +54,22 @@ export default {
     CTextField,
     CButton,
     CHeader,
-    CUser
+    CUser,
+    CIcon
   },
-  /* props:{
-    msg: {
-      type: String,
-      default:''
-    },
-  }, */
   data() {
     return {
       username: '',
       password: '',
       errorVisibility: false,
       errorMessage: 'Credenciales Incorrectas!!!',
-      type: 'password'
+      type: 'password',
+    }
+  },
+  props:{
+    msg:{
+      type: String,
+      required: false,
     }
   },
   methods: {
@@ -85,13 +101,14 @@ export default {
     },
     goRegister() {
       this.$router.push({ name: 'register' })
-    }
-    /* showPassword(){
-      this.type='password';
+    },
+    showPassword(){
       if(this.type==='password'){
         this.type='text';
+      }else{
+        this.type='password';
       }
-    } */
-  }
+    }
+  },
 }
 </script>

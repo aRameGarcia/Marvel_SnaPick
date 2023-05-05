@@ -52,7 +52,7 @@ export default {
             const doRename = await userStore().rename({ oldUsername, newUsername })
     
             if (doRename) {
-              this.$router.push({ name: 'profile' })
+              this.$router.push({ name: 'profile', params: {msg: 'Se ha cambiado el nombre de usuario'}})
             } else {
               this.sendError()
             }

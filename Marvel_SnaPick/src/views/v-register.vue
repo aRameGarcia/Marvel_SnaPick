@@ -42,7 +42,7 @@ export default {
       password: '',
       errorVisibility: false,
       errorMessage: 'Nombre de Usuario no disponible!!!',
-      type: 'password'
+      type: 'password',
     }
   },
   methods: {
@@ -53,7 +53,7 @@ export default {
         const doRegister = await userStore().register({ username, password })
 
         if (doRegister) {
-          this.$router.push({ name: 'login', params:{msg:'Usuario registrado con exito'}})
+          this.$router.push({ name: 'login', params:{msg: 'Usuario registrado con éxito'}})
         } else {
           this.sendError()
         }

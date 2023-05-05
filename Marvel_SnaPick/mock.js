@@ -141,6 +141,7 @@ app.post('/user/register', (req, res) => {
       res.status(404).send({ data: 'User repeat!' })
    } else {
       users.push({ username, password })
+      console.log(users)
       res.send(true)
    }
 })

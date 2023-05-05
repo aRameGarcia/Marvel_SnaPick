@@ -7,6 +7,7 @@
       :type="type"
       @input="$emit('update:modelValue', $event.target.value)"
     />
+    <slot v-if="$slots.icon" name="icon"></slot>
   </div>
 </template>
 
@@ -38,6 +39,9 @@ export default {
 
 <style lang="scss">
 .c-text-field {
+  display: flex;
+  flex-direction: row;
+  gap:5px;
   background-color: var(--color-input);
   color: var(--color-font);
   border-radius: 10px;

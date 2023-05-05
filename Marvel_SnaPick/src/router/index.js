@@ -5,10 +5,12 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
+      path: '/:msg?',
       name: 'login',
       component: () => import('../views/v-login.vue'),
-      /* props:true */
+      props: route=>({
+        msg: route.params.msg,
+      }),
     },
     {
       path: '/registro',
@@ -16,9 +18,12 @@ const router = createRouter({
       component: () => import('../views/v-register.vue')
     },
     {
-      path:'/perfil',
+      path:'/perfil/:msg?',
       name:'profile',
-      component: () => import('../views/v-profile.vue')
+      component: () => import('../views/v-profile.vue'),
+      props: route=>({
+        msg: route.params.msg,
+      }),
     },
     {
       path: '/perfil/cambiar-nombre',
