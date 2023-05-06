@@ -82,5 +82,7 @@ export default {
     background-color: var(--color-button);
     color: var(--color-background-light);
     font-weight: bold;
+    display: flex;
+    justify-content: center;
 }
 </style>

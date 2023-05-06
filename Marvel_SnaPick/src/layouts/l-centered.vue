@@ -35,11 +35,13 @@ export default {
   height: 100%;
   gap: 10px;
 }
-.l-centered__header{
+
+.l-centered__header {
   width: 100%;
-  height: 20%;
+  height: 15%;
 }
-.l-centered__title{
+
+.l-centered__title {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,14 +50,17 @@ export default {
   font-size: larger;
   font-weight: bold;
 }
+
 .l-centered__grid {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 70%;
+  height: 75%;
   width: 100%;
   gap: 10px;
+  overflow-x: scroll;
 }
+
 .l-centered__form {
   display: flex;
   flex-direction: column;
@@ -65,6 +70,7 @@ export default {
   gap: 10px;
   margin: 20px;
 }
+
 .l-centered__button {
   display: flex;
   flex-direction: row;
@@ -73,9 +79,13 @@ export default {
   width: 40%;
   gap: 20px;
 }
-.l-centered__cards{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-    width: 100%;
+
+.l-centered__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  width: 100%;
+}
+::-webkit-scrollbar {
+    display: none;
 }
 </style>

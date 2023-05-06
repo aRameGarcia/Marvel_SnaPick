@@ -6,21 +6,17 @@
                     <c-user :innerText="userLogged"></c-user>
                 </template>
                 <template #buttonProfile>
-                    <c-button class="v-profile__button--menu" @click="goPlace('menu')" innerText="MENÚ"></c-button>
+                    <c-button class="v-profile__button--menu" @click="goProfile" innerText="PERFIL"></c-button>
                 </template>
             </c-header>
         </template>
         <template #title>
-            <h1>PERFIL</h1>
-            <div class="v-profile" v-if="msg !== undefined">
-                <span class="v-profile--msg">{{ msg }}</span>
-            </div>
+            <h1>MENU PRINCIPAL</h1>
         </template>
         <template #button>
-            <c-button class="v-profile__button--option" @click="goPlace('rename')" innerText="CAMBIAR NOMBRE"></c-button>
-            <c-button class="v-profile__button--option" @click="goPlace('repassword')"
-                innerText="CAMBIAR CONTRASEÑA"></c-button>
-            <c-button class="v-profile__button--option" @click="goPlace('collection')" innerText="COLECCIÓN"></c-button>
+        <c-button class="v-profile__button--option" innerText="MODO SEALED"></c-button>
+        <c-button class="v-profile__button--option" innerText="MODO DRAFT"></c-button>
+        <c-button class="v-profile__button--option" innerText="MODO ARENA"></c-button>
         </template>
     </l-options>
 </template>
@@ -44,19 +40,13 @@ export default {
             userLogged: '',
         }
     },
-    props: {
-        msg: {
-            type: String,
-            required: false,
-        }
-    },
     methods: {
         async loadUser() {
             this.userLogged = userStore().userLogged;
         },
-        goPlace(place) {
-            this.$router.push({ name: place });
-        },
+        goProfile(){
+            this.$router.push({name:'profile'})
+        }
     },
     created() {
         this.loadUser();
@@ -70,11 +60,11 @@ export default {
     max-height: 40px;
     border-radius: 5px;
     font-weight: bold;
+    text-align: center;
     display: flex;
     justify-content: center;
     font-size: medium;
 }
-
 .v-profile__button--option {
     height: 80%;
     border-radius: 10px;

@@ -9,7 +9,7 @@ export const cardsStore = defineStore('cards', {
     actions:{
         async fetchCards(){
             const method ='GET'
-            const url = '/cards/loadCards'
+            const url = '/cards'
             return apiStore()
                 .doRequest({url, method})
                 .then(res => {

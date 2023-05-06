@@ -21,6 +21,6 @@ export default {
 
 <style>
 .c-cards-image {
-    height: 120px;
+    height: 200px;
 }
 </style>
