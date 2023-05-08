@@ -71,8 +71,10 @@ export const userStore = defineStore('user', {
          })
       },
 
-      logout() {
+      async logout() {
          this.isLogged = false
+         this.userLogged=''
+         return true;
       }
    }
 })

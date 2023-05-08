@@ -1,22 +1,22 @@
 import db from "../config/database.js";
 
 export const getCards = (result) => {
-    db.query("SELECT * FROM cards", (err, results) => {
-        if(err){
+    db.query("SELECT * FROM cards", (err, res) => {
+        if (err) {
             console.log(err);
             result(err, null);
-        }else{
-            result(null, results);
+        } else {
+            result(null, res);
         }
     });
 }
 
 export const getCard = (id, result) => {
-    db.query("SELECT * FROM cards WHERE CardDefId = ?",id,(err, results) =>{
-        if(err){
+    db.query("SELECT * FROM cards WHERE CardDefId = ?", id, (err, results) => {
+        if (err) {
             console.log(err);
             result(err, null);
-        }else{
+        } else {
             result(null, results[0]);
         }
     });
