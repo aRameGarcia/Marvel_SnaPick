@@ -8,9 +8,9 @@ const router = createRouter({
       path: '/:msg?',
       name: 'login',
       component: () => import('../views/v-login.vue'),
-      props: route => ({
-        msg: route.params.msg,
-      }),
+      props: (route) => ({
+        msg: route.params.msg
+      })
     },
     {
       path: '/registro',
@@ -21,9 +21,9 @@ const router = createRouter({
       path: '/perfil/:msg?',
       name: 'profile',
       component: () => import('../views/v-profile.vue'),
-      props: route => ({
-        msg: route.params.msg,
-      }),
+      props: (route) => ({
+        msg: route.params.msg
+      })
     },
     {
       path: '/perfil/cambiar-nombre',
@@ -46,11 +46,15 @@ const router = createRouter({
       component: () => import('../views/v-menu.vue')
     },
     {
+      path: '/menu/arena',
+      name: 'arena',
+      component: () => import('../views/v-arena.vue')
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'default',
       component: () => import('../views/v-login.vue')
     }
-
   ]
 })
 
@@ -64,7 +68,6 @@ router.beforeEach((to, from, next) => {
     return next({ name: 'login' })
   }
   next()
-
 })
 
 export default router
