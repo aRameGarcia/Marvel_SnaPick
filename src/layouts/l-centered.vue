@@ -16,9 +16,6 @@
       <div class="l-centered__button">
         <slot name="button"></slot>
       </div>
-      <div class="l-centered__cardsArena">
-        <slot name="cardsArena"></slot>
-      </div>
     </div>
   </section>
 </template>
@@ -87,20 +84,6 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   width: 100%;
-}
-
-.l-centered__cardsArena {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  word-wrap: break-word;
-  text-align: center;
-}
-.l-centered__cardsArena img {
-  height: 300px;
-}
-.l-centered__cardsArena h1 {
-  width: 1000px;
 }
 
 ::-webkit-scrollbar {
