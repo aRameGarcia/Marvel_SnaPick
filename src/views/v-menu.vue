@@ -27,7 +27,11 @@
         @click="goPlace('sealed')"
         innerText="MODO SEALED"
       ></c-button>
-      <c-button class="v-profile__button--option" innerText="MODO DRAFT"></c-button>
+      <c-button
+        class="v-profile__button--option"
+        @click="goPlace('draft')"
+        innerText="MODO DRAFT"
+      ></c-button>
       <c-button
         class="v-profile__button--option"
         @click="goPlace('arena')"

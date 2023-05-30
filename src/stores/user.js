@@ -8,6 +8,21 @@ export const userStore = defineStore('user', {
   }),
 
   actions: {
+    async fetchUsers() {
+      const method = 'GET'
+      const url = '/user/users'
+      return apiStore()
+        .doRequest({ url, method })
+        .then((res) => {
+          this.cards = res
+          return res
+        })
+        .catch((err) => {
+          console.log(err)
+          return false
+        })
+    },
+
     async login({ username, password }) {
       const method = 'POST'
       const url = '/user/login'
@@ -60,6 +75,21 @@ export const userStore = defineStore('user', {
       const method = 'PUT'
       const url = '/user/repassword'
       const payload = { oldPassword, newPassword }
+      return apiStore()
+        .doRequest({ method, url, payload })
+        .then((res) => {
+          return res
+        })
+        .catch((error) => {
+          console.log(error)
+          return false
+        })
+    },
+
+    async deleteUser({ username }) {
+      const method = 'DELETE'
+      const url = '/user/delete'
+      const payload = { username }
       return apiStore()
         .doRequest({ method, url, payload })
         .then((res) => {

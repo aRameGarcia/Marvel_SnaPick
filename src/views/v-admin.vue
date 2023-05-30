@@ -14,16 +14,18 @@
     <template #users>
       <div class="v-admin--editable">
         <c-text-field id="username_input" placeholder="Usuario" v-model="username" />
-        <c-text-field id="password_input" placeholder="Contraseña" v-model="password" />
         <c-text-field id="rol_input" placeholder="Rol" v-model="rol" />
       </div>
-      <div class="v-admin--users">
-        <span style="width: 22%"> Mario </span>
-        <span style="width: 23%"> Ríos </span>
-        <span style="width: 22%"> user </span>
-        <div class="v-admin--users__button" style="width: 33%">
+      <div v-for="user in users" class="v-admin--users">
+        <span style="width: 34%">
+          {{ user.username }}
+        </span>
+        <span style="width: 34%">
+          {{ user.rol }}
+        </span>
+        <div class="v-admin--users__button" style="width: 32%">
           <c-button innerText="Editar"></c-button>
-          <c-button innerText="Borrar"></c-button>
+          <c-button innerText="Borrar" @click="deleteUser(user.username)"></c-button>
         </div>
       </div>
     </template>
@@ -65,14 +67,37 @@ export default {
   },
   data() {
     return {
+      users: [],
       username: '',
       password: '',
       rol: ''
     }
   },
   methods: {
+    async loadUsers() {
+      try {
+        const useUserStore = userStore()
+        this.users = await useUserStore.fetchUsers()
+        this.fetched = true
+      } catch (e) {
+        console.log(e)
+        this.error = true
+      }
+    },
     async loadUser() {
       this.userLogged = userStore().userLogged
+    },
+    async deleteUser(username) {
+      const { userId } = username
+      try {
+        const useUserStore = userStore()
+        await useUserStore.deleteUser({ userId })
+        this.fetched = true
+      } catch (e) {
+        console.log(e)
+        this.error = true
+      }
+      this.loadUsers()
     },
     async doLogout() {
       const doLogout = await userStore().logout()
@@ -84,6 +109,7 @@ export default {
     }
   },
   created() {
+    this.loadUsers()
     this.loadUser()
   }
 }
