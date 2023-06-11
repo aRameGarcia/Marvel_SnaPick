@@ -96,7 +96,6 @@ export default {
       try {
         const useCardsStore = cardsStore()
         this.cards = await useCardsStore.fetchCards()
-        this.fetched = true
         this.shuffleCards(this.cards)
         let i = 0
         for (i = 0; i < 36; i++) {
@@ -182,10 +181,10 @@ export default {
   max-width: 80px;
   max-height: 40px;
   border-radius: 5px;
-  background-color: var(--color-button);
-  color: var(--color-background-light);
   font-weight: bold;
+  text-align: center;
   display: flex;
   justify-content: center;
+  font-size: medium;
 }
 </style>
